@@ -1,27 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CheckIcon } from '@heroicons/react/24/solid';
 
 
-function EditForm({editedTask,updatedTask}) {
+function EditForm({editedTask,updateTask,closeEditMode}) {
 
 	const [updatedTaskName,setUpdatedTaskName] = useState(editedTask.name);
 
+    useEffect(()=>{
+
+        const closeModalIfEscaped =(e)=>{
+            e.key === "Escape" && closeEditMode()
+        }
+
+        window.addEventListener('keydown',closeModalIfEscaped);
+
+        return ()=>{
+            window.removeEventListener('keydown',closeModalIfEscaped)
+        }
+
+    },[closeEditMode])
 
     const handleFormSubmit =(e)=>{
         e.preventDefault();
-        // updatedTask()
+        updateTask({...editedTask, name: updatedTaskName});
 		
-
     }
-		
+	
+
 
   return (
     <div role='dialog' 
     aria-labelledby='editTask'
-    // onClick={} 
+    onClick={(e)=>{
+        e.target===e.currentTarget && closeEditMode()
+    }} 
     className='Editor bg-white '
     >
-        <form className='edittask  flex justify-evenly bg-black rounded-md h-max px-20 py-10 gap-1'
+        <form className='edittask  flex justify-evenly bg-black bg-opacity-95 rounded-lg h-max px-20 py-10 gap-1'
             onSubmit={handleFormSubmit}
             >
             {/* <p>{task}</p> */}

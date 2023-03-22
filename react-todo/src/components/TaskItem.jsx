@@ -17,7 +17,7 @@ function TaskItem({task,deleteTask,toggleTask,enterEditMode}) {
       {/* {task.name} */}
       <div className="task-group flex">
         <input type="checkbox" 
-            className='mx-3' 
+            className='mx-3 bg-transparent' 
             name={task.name} 
             id={task.id}
             checked={isChecked}

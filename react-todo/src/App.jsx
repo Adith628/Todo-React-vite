@@ -10,10 +10,9 @@ import CustomForm from './components/CustomForm'
 function App() {
 
   const[isEditing,setIsEditing] = useState(false);
-  
   const[tasks,setTasks] = useState([]);
-  
   const[editedTask,setEditedTask] = useState(null);
+  const[previousFocusEl,setPreviousFocusEl] =useState(null)
 
   const addTask =(task)=>{
     setTasks(prevState =>[...prevState,task]);
@@ -37,13 +36,24 @@ function App() {
       t.id === task.id
       ?{...t,name : task.name}
       : t
-
     )))
+    closeEditMode();
+
+  }
+
+  const closeEditMode =()=>{
+    setIsEditing(false);
+    previousFocusEl.focus();
+    // 
   }
 
   const enterEditMode =(task)=>{
     setEditedTask(task);
     setIsEditing(true);
+
+    setPreviousFocusEl(document.activeElement);
+    
+
   }
   
 
@@ -52,12 +62,13 @@ function App() {
   return (
     <div className="Container">
       <header>
-        <h1 className='text-6xl  text-green-600 my-6 ' >My Task List</h1>
+        <h1 className='text-6xl font-extrabold text-green-600 my-6 ' >My Task List</h1>
       </header>
       {
         isEditing && <EditForm
         editedTask={editedTask}
-        updatedTask={updateTask}
+        updateTask={updateTask}
+        closeEditMode={closeEditMode}
       />
       }
       
@@ -67,7 +78,7 @@ function App() {
         deleteTask={deleteTask}
         toggleTask={toggleTask}
         editedTask={editedTask}
-        enterEditMode ={enterEditMode}
+        enterEditMode={enterEditMode}
         
           />}
     </div>
