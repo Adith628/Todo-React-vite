@@ -33,13 +33,13 @@ function TaskItem({task,deleteTask,toggleTask,enterEditMode}) {
          </label>
       </div>
       <div className='flex gap-3'>
-            <button className='bg-blue-800 px-3' 
+            <button className='pen bg-blue-800 px-3' 
             aria-label={`Update ${task.name} Task`}
             onClick={()=>{enterEditMode(task)}}
             >
                <PencilIcon width={18} height={18}/>
             </button>
-            <button className='bg-red-700  px-3 py-2' 
+            <button className= 'dlt bg-red-700  px-3 py-2' 
             aria-label={`Update  Task`}
             onClick={()=>deleteTask(task.id)}
             >

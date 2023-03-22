@@ -41,8 +41,8 @@ function CustomForm({addTask}) {
 			/>
 			<label htmlFor="" className='label px-6'>Enter Task</label>
       </div>   
-		<button className='btn' type='submit' aria-label='Add task'>		
-			<PlusIcon className='h-6'/>
+		<button className='btnplus' type='submit' aria-label='Add task'>		
+			<PlusIcon className='plus h-6'/>
 		</button>
     </form>
   )

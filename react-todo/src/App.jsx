@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import TaskList from './components/TaskList';
 import EditForm from './components/EditForm';
 
@@ -16,7 +16,9 @@ function App() {
   // const[tasks,setTasks] = useState([]);
   const[isEditing,setIsEditing] = useState(false);
   const[editedTask,setEditedTask] = useState(null);
-  const[previousFocusEl,setPreviousFocusEl] =useState(null)
+  const[previousFocusEl,setPreviousFocusEl] =useState(null);
+  const [theme,setTheme] =useState(localStorage.theme);
+
 
   const addTask =(task)=>{
     setTasks(prevState =>[...prevState,task]);
@@ -66,7 +68,7 @@ function App() {
   return (
     <div className="Container">
       <header>
-        <h1 className='text-6xl font-extrabold text-green-600 my-6 ' >My Task List</h1>
+        <h1 className='text-6xl font-extrabold  my-6 ' >My Task List</h1>
       </header>
       {
         isEditing && <EditForm
