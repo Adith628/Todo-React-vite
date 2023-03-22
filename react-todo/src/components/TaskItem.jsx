@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { CheckIcon,PencilIcon } from '@heroicons/react/24/solid';
 import {TrashIcon} from '@heroicons/react/24/solid';
 
-function TaskItem({task,deleteTask}) {
+function TaskItem({task,deleteTask,toggleTask,enterEditMode}) {
 
     const [isChecked,setIsChecked]=useState(task.checked);
 
     const handleCheckBoxChange =(e)=>{
         setIsChecked(!isChecked);
+        toggleTask(task.id)
     }
 
 
@@ -34,7 +35,7 @@ function TaskItem({task,deleteTask}) {
       <div className='flex gap-3'>
             <button className='bg-blue-800 px-3' 
             aria-label={`Update ${task.name} Task`}
-            onClick=''
+            onClick={()=>{enterEditMode(task)}}
             >
                <PencilIcon width={18} height={18}/>
             </button>

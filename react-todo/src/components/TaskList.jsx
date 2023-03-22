@@ -4,7 +4,7 @@ import TaskItem from './TaskItem'
 // styles
 
 
-function TaskList({tasks,deleteTask}) {
+function TaskList({tasks,deleteTask,toggleTask,enterEditMode}) {
   return (
     <ul className='h-auto overflow-y-scroll max-h-70 w-auto p-5 flex-col gap-1 border-solid border-white' >
     {
@@ -13,6 +13,8 @@ function TaskList({tasks,deleteTask}) {
                 key={task.id}
                 task={task}
                 deleteTask={deleteTask}
+                toggleTask={toggleTask}
+                enterEditMode={enterEditMode}
             />
         ))
     }

@@ -28,6 +28,18 @@
   transition: all 0.4s;
 }
 
+.updatelabel{
+  position: absolute;
+  top:-28px;
+  left: -16px;
+  opacity: 0;
+  transition: all 0.4s;
+}
+
+.input:focus + .updatelabel{
+  opacity: 1;
+}
+
 .input:focus + .label{
   opacity: 1;
 }
@@ -41,6 +53,26 @@
   border-radius: 12px;
   background-color: #1a1a1a45;
   max-height: 80vh;
+}
+
+.Editor{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: rgba(79, 79, 79, 0.393);
+  transition: translate(-50%,-50%);
+  transition: all 0.5s;
+  z-index: 20;
+}
+
+.edittask{
+  margin-top: 1.3rem;
+  border: solid rgb(0, 80, 141);
 }
 
 #root::before{
